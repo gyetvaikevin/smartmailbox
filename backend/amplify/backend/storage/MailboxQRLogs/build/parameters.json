@@ -1,0 +1,7 @@
+{
+  "tableName": "MailboxQRLogs",
+  "partitionKeyName": "deviceId",
+  "partitionKeyType": "S",
+  "sortKeyName": "timestamp",
+  "sortKeyType": "S"
+}

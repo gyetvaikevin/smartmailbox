@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f6fa;
+  color: #333;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  background: #2c3e50;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #1abc9c;
+}
+
+main {
+  width: 100% ;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}

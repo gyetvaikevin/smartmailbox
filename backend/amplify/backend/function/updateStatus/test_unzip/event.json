@@ -1,0 +1,5 @@
+{
+  "httpMethod": "POST",
+  "headers": { "Content-Type": "application/json" },
+  "body": "{\"deviceId\":\"SmartMailbox1\",\"status\":\"open\"}"
+}

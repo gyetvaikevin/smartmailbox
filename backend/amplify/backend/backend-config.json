@@ -1,0 +1,369 @@
+{
+  "api": {
+    "SmartMailboxAPIv2": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "listDevices"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "linkDevice"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getLatestStatus"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "manualOpen"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "updateStatus"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getDeviceLogs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "mailboxapp5ff9b13d": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "function": {
+    "PostConfirmationClean": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "PreSignupClean": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getDeviceLogs": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "MailboxQRLogs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getLatestStatus": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "SmartMailboxStorage"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "linkDevice": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "userdevices"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "listDevices": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "userdevices"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "manualOpen": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "processDeviceEvents": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "updateStatus": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_mailboxapp5ff9b13d_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "mailboxapp5ff9b13d"
+        }
+      ]
+    },
+    "AMPLIFY_auth_mailboxapp5ff9b13d_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "mailboxapp5ff9b13d"
+        }
+      ]
+    },
+    "AMPLIFY_auth_mailboxapp5ff9b13d_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "mailboxapp5ff9b13d"
+        }
+      ]
+    },
+    "AMPLIFY_auth_mailboxapp5ff9b13d_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "mailboxapp5ff9b13d"
+        }
+      ]
+    },
+    "AMPLIFY_function_PostConfirmationClean_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "PostConfirmationClean"
+        }
+      ]
+    },
+    "AMPLIFY_function_PostConfirmationClean_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "PostConfirmationClean"
+        }
+      ]
+    },
+    "AMPLIFY_function_PreSignupClean_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "PreSignupClean"
+        }
+      ]
+    },
+    "AMPLIFY_function_PreSignupClean_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "PreSignupClean"
+        }
+      ]
+    },
+    "AMPLIFY_function_getDeviceLogs_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getDeviceLogs"
+        }
+      ]
+    },
+    "AMPLIFY_function_getDeviceLogs_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getDeviceLogs"
+        }
+      ]
+    },
+    "AMPLIFY_function_getLatestStatus_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getLatestStatus"
+        }
+      ]
+    },
+    "AMPLIFY_function_getLatestStatus_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getLatestStatus"
+        }
+      ]
+    },
+    "AMPLIFY_function_getLatestStatus_tableName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getLatestStatus"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkDevice_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkDevice"
+        }
+      ]
+    },
+    "AMPLIFY_function_linkDevice_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "linkDevice"
+        }
+      ]
+    },
+    "AMPLIFY_function_listDevices_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listDevices"
+        }
+      ]
+    },
+    "AMPLIFY_function_listDevices_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "listDevices"
+        }
+      ]
+    },
+    "AMPLIFY_function_manualOpen_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "manualOpen"
+        }
+      ]
+    },
+    "AMPLIFY_function_manualOpen_iotEndpoint": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "manualOpen"
+        }
+      ]
+    },
+    "AMPLIFY_function_manualOpen_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "manualOpen"
+        }
+      ]
+    },
+    "AMPLIFY_function_processDeviceEvents_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "processDeviceEvents"
+        }
+      ]
+    },
+    "AMPLIFY_function_processDeviceEvents_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "processDeviceEvents"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateStatus_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateStatus"
+        }
+      ]
+    },
+    "AMPLIFY_function_updateStatus_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "updateStatus"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "MailboxQRLogs": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "SmartMailboxStorage": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "userdevices": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

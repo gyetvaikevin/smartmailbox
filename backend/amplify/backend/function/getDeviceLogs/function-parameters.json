@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "MailboxQRLogs": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

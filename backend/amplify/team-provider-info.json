@@ -1,0 +1,75 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mailboxapp-dev-56efe-authRole",
+      "UnauthRoleArn": "arn:aws:iam::546771245410:role/amplify-mailboxapp-dev-56efe-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::546771245410:role/amplify-mailboxapp-dev-56efe-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+      "UnauthRoleName": "amplify-mailboxapp-dev-56efe-unauthRole",
+      "StackName": "amplify-mailboxapp-dev-56efe",
+      "StackId": "arn:aws:cloudformation:eu-central-1:546771245410:stack/amplify-mailboxapp-dev-56efe/35912ce0-a8e1-11f0-a8ba-0acd8cfba637",
+      "AmplifyAppId": "d2y8t9d4z5sf43",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "storage": {
+        "SmartMailboxStorage": {},
+        "MailboxQRLogs": {},
+        "userdevices": {}
+      },
+      "function": {
+        "getLatestStatus": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/getLatestStatus-6d58313469707a2f3030-build.zip",
+          "tableName": "SmartMailboxStorage-dev"
+        },
+        "updateStatus": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/updateStatus-302b3939374f4b2b4150-build.zip"
+        },
+        "manualOpen": {
+          "iotEndpoint": "aw0jttguq1qsu-ats.iot.eu-central-1.amazonaws.com",
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/manualOpen-6166466a623655614839-build.zip"
+        },
+        "processDeviceEvents": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/processDeviceEvents-646a6b5a536e49463737-build.zip"
+        },
+        "listDevices": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/listDevices-7a33314b476b67786c47-build.zip"
+        },
+        "linkDevice": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/linkDevice-683176576568622f6258-build.zip"
+        },
+        "PreSignupClean": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/PreSignupClean-6f55335046635345715a-build.zip"
+        },
+        "PostConfirmationClean": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/PostConfirmationClean-79523138776d54447750-build.zip"
+        },
+        "getDeviceLogs": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/getDeviceLogs-687468414b636a6b5469-build.zip"
+        }
+      },
+      "api": {
+        "SmartMailboxAPIv2": {}
+      },
+      "auth": {
+        "mailboxapp5ff9b13d": {
+          "userPoolId": "eu-central-1_QuDqgZlPc",
+          "userPoolName": "mailboxapp-clean",
+          "webClientId": "4m9d1tisbnsq6rvpettl3ag361",
+          "nativeClientId": "4m9d1tisbnsq6rvpettl3ag361"
+        }
+      }
+    }
+  }
+}

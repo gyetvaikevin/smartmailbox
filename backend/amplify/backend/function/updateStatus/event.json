@@ -1,0 +1,6 @@
+{
+  "pathParameters": {
+    "deviceId": "SmartMailbox1"
+  },
+  "body": "{\"status\":{\"lock1\":\"OPEN\",\"lock2\":\"CLOSED\"}}"
+}

@@ -1,0 +1,82 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.device-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.device-select select,
+.device-select button {
+  padding: 8px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.locks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.lock-card {
+  flex: 1 1 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.lock-card:hover {
+  transform: translateY(-3px);
+}
+
+.lock-status {
+  height: 20px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.lock-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lock-buttons button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lock-buttons button:hover {
+  background: #2980b9;
+}
+
+.register-device {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.note {
+  margin-top: 12px;
+  color: #555;
+}

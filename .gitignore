@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Amplify build cache
+backend/amplify/#current-cloud-backend/
+backend/amplify/backend/*/dist/
+backend/amplify/backend/*/*.zip
+backend/amplify/backend/*/*.state
+backend/amplify/backend/*/out.json
+backend/amplify/backend/*/response.json
+
+# Frontend build
+frontend/dist/
+
+# IDE
+.vscode/
+.DS_Store
+
+# Secrets
+*.env
+token.txt

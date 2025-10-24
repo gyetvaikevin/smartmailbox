@@ -1,0 +1,12 @@
+[
+  {
+    "Action": [
+      "dynamodb:PutItem",
+      "dynamodb:UpdateItem"
+    ],
+    "Resource": [
+      "arn:aws:dynamodb:eu-central-1:546771245410:table/SmartMailboxStorage-dev",
+      "arn:aws:dynamodb:eu-central-1:546771245410:table/MailboxQRLogs-dev"
+    ]
+  }
+]

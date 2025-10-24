@@ -1,0 +1,14 @@
+{
+  "resourceName": "MailboxQRLogs",
+  "tableName": "MailboxQRLogs",
+  "partitionKey": {
+    "fieldName": "deviceId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "timestamp",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

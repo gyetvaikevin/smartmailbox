@@ -1,0 +1,7 @@
+{
+  "tableName": "UserDevices",
+  "partitionKeyName": "userId",
+  "partitionKeyType": "S",
+  "sortKeyName": "deviceId",
+  "sortKeyType": "S"
+}

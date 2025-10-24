@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "paths": {
+    "/listDevices": {
+      "name": "/listDevices",
+      "lambdaFunction": "listDevices",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    },
+    "/linkDevice": {
+      "name": "/linkDevice",
+      "lambdaFunction": "linkDevice",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    },
+    "/statusget": {
+      "name": "/statusget",
+      "lambdaFunction": "getLatestStatus",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    },
+    "/manual": {
+      "name": "/manual",
+      "lambdaFunction": "manualOpen",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "update"
+        ]
+      }
+    },
+    "/status": {
+      "name": "/status",
+      "lambdaFunction": "updateStatus",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "update"
+        ]
+      }
+    },
+    "/logs": {
+      "name": "/logs",
+      "lambdaFunction": "getDeviceLogs",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}
