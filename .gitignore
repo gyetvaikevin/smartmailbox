@@ -19,3 +19,11 @@ frontend/dist/
 # Secrets
 *.env
 token.txt
+
+backend/amplify/backend/amplify-meta.json
+backend/amplify/backend/.temp
+backend/amplify/logs
+backend/amplify/mock-data
+backend/amplify/mock-api-resources
+Thumbs.db
+.idea/

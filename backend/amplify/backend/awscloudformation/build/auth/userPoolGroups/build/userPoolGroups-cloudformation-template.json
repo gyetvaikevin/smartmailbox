@@ -1,0 +1,50 @@
+{
+  "Description": "Root Stack for AWS Amplify CLI",
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "AuthRoleArn": {
+      "Type": "String"
+    },
+    "UnauthRoleArn": {
+      "Type": "String"
+    },
+    "authmailboxappb2a2dbb4UserPoolId": {
+      "Type": "String",
+      "Default": "authmailboxappb2a2dbb4UserPoolId"
+    },
+    "authmailboxappb2a2dbb4AppClientID": {
+      "Type": "String",
+      "Default": "authmailboxappb2a2dbb4AppClientID"
+    },
+    "authmailboxappb2a2dbb4AppClientIDWeb": {
+      "Type": "String",
+      "Default": "authmailboxappb2a2dbb4AppClientIDWeb"
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "UserGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "Description": "override success",
+        "GroupName": "User",
+        "Precedence": 1,
+        "UserPoolId": {
+          "Ref": "authmailboxappb2a2dbb4UserPoolId"
+        }
+      }
+    }
+  }
+}

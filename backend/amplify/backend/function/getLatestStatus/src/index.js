@@ -29,6 +29,7 @@ exports.handler = async (event) => {
       };
     }
 
+    // Közvetlen lock1/lock2 mezők olvasása
     const lock1 = item.lock1 === true ? "OPEN" :
                   item.lock1 === false ? "CLOSED" : "UNKNOWN";
     const lock2 = item.lock2 === true ? "OPEN" :

@@ -62,6 +62,20 @@
           "read"
         ]
       }
+    },
+    "/unlock": {
+      "name": "/unlock",
+      "lambdaFunction": "unlockDevice",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/setPassword": {
+      "name": "/setPassword",
+      "lambdaFunction": "setPassword",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

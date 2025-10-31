@@ -297,6 +297,30 @@
               "Outputs.Arn"
             ]
           },
+          "functionunlockDeviceName": {
+            "Fn::GetAtt": [
+              "functionunlockDevice",
+              "Outputs.Name"
+            ]
+          },
+          "functionunlockDeviceArn": {
+            "Fn::GetAtt": [
+              "functionunlockDevice",
+              "Outputs.Arn"
+            ]
+          },
+          "functionsetPasswordName": {
+            "Fn::GetAtt": [
+              "functionsetPassword",
+              "Outputs.Name"
+            ]
+          },
+          "functionsetPasswordArn": {
+            "Fn::GetAtt": [
+              "functionsetPassword",
+              "Outputs.Arn"
+            ]
+          },
           "env": "dev"
         }
       }
@@ -307,7 +331,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/getLatestStatus-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/getLatestStatus-6d58313469707a2f3030-build.zip",
+          "s3Key": "amplify-builds/getLatestStatus-32766b6a717862645352-build.zip",
           "tableName": "SmartMailboxStorage-dev",
           "storageSmartMailboxStorageName": {
             "Fn::GetAtt": [
@@ -331,7 +355,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/updateStatus-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/updateStatus-302b3939374f4b2b4150-build.zip",
+          "s3Key": "amplify-builds/updateStatus-34482b54622f4d6b5653-build.zip",
           "env": "dev"
         }
       }
@@ -354,7 +378,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/processDeviceEvents-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/processDeviceEvents-646a6b5a536e49463737-build.zip",
+          "s3Key": "amplify-builds/processDeviceEvents-6f336e4d654746546843-build.zip",
           "env": "dev"
         }
       }
@@ -464,6 +488,28 @@
               "Outputs.StreamArn"
             ]
           },
+          "env": "dev"
+        }
+      }
+    },
+    "functionunlockDevice": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/unlockDevice-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/unlockDevice-616e476d59346a5a3273-build.zip",
+          "env": "dev"
+        }
+      }
+    },
+    "functionsetPassword": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/setPassword-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/setPassword-74674875684251533351-build.zip",
           "env": "dev"
         }
       }

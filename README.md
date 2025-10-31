@@ -75,5 +75,13 @@ Célja: a hagyományos aláírásos átvétel kiváltása biztonságos, naplózo
 
 ---
 
-## 📂 Projektstruktúra
+
+---
+
+## ⚡ Fejlesztői jegyzetek
+
+- A `dist/`, `node_modules/`, `#current-cloud-backend/` mappák nincsenek verziókövetve.
+- Verziózás: [SemVer](https://semver.org/) (MAJOR.MINOR.PATCH).
+- Utolsó stabil verzió: **v1.1.0**
+
 

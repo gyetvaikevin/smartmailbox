@@ -3,7 +3,7 @@ export default function LockControls({ status, deviceId, onAction }) {
 
   return (
     <div className="locks">
-      {["lock1", "lock2"].map(lock => (
+      {["lock1", "lock2"].map((lock) => (
         <div key={lock} className="lock-card">
           <h3>{lock.toUpperCase()}</h3>
           <div
@@ -14,8 +14,8 @@ export default function LockControls({ status, deviceId, onAction }) {
           />
           <p>Állapot: {status[lock]}</p>
           <div className="lock-buttons">
+            {/* Csak nyitás gomb */}
             <button onClick={() => onAction(lock, "open")}>Nyitás</button>
-            <button onClick={() => onAction(lock, "close")}>Zárás</button>
           </div>
         </div>
       ))}

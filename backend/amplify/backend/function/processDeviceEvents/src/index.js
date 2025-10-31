@@ -60,31 +60,39 @@ exports.handler = async (event) => {
     // "web" marad "web"
   }
 
-  // --- Audit log mentése ---
-  await ddb.send(new PutCommand({
-    TableName: "MailboxQRLogs-dev",
-    Item: {
-      deviceId,
-      timestamp,
-      qr: payload.qr || null,
-      lock: payload.lock || "unknown",
-      state: payload.state || null,
-      trigger
+  // --- Audit log CSAK status topic esetén és csak CLOSED állapotnál ---
+  if (mqttTopic.includes("status") && !mqttTopic.includes("statusupdate")) {
+    if (payload.state === "CLOSED") {
+      await ddb.send(new PutCommand({
+        TableName: "MailboxQRLogs-dev",
+        Item: {
+          deviceId,
+          timestamp,
+          lock: payload.lock || "unknown",
+          state: payload.state,
+          trigger,
+          qr: payload.qr || null
+        }
+      }));
     }
-  }));
+  }
 
-  // --- Aktuális állapot frissítése ---
-  const lockField = payload.lock === "lock2" ? "lock2" : "lock1";
-  const lockValue = payload.state === "OPEN";
+  // --- Aktuális állapot frissítése CSAK statusupdate topic esetén ---
+  if (mqttTopic.includes("statusupdate")) {
+    const lock1 = payload.lock1 === true;
+    const lock2 = payload.lock2 === true;
 
-  await ddb.send(new UpdateCommand({
-    TableName: "SmartMailboxStorage-dev",
-    Key: { deviceId },
-    UpdateExpression: `SET ${lockField} = :val`,
-    ExpressionAttributeValues: {
-      ":val": lockValue
-    }
-  }));
+    await ddb.send(new UpdateCommand({
+      TableName: "SmartMailboxStorage-dev",
+      Key: { deviceId },
+      UpdateExpression: "SET lock1 = :l1, lock2 = :l2, lastUpdate = :ts",
+      ExpressionAttributeValues: {
+        ":l1": lock1,
+        ":l2": lock2,
+        ":ts": timestamp
+      }
+    }));
+  }
 
   return { statusCode: 200, headers, body: JSON.stringify({ ok: true }) };
 };

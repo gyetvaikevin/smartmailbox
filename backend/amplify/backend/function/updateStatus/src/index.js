@@ -27,9 +27,16 @@ exports.handler = async (event) => {
     if (event.deviceId) deviceId = event.deviceId;
   }
 
-  let status = body.status || {};
-  if (typeof status === "string") {
-    try { status = JSON.parse(status); } catch { status = { raw: status }; }
+  // Szedd ki a lock értékeket
+  let lock1 = null;
+  let lock2 = null;
+
+  if (body.status) {
+    lock1 = body.status.lock1 === true || body.status.lock1 === "true";
+    lock2 = body.status.lock2 === true || body.status.lock2 === "true";
+  } else {
+    if (typeof body.lock1 !== "undefined") lock1 = body.lock1 === true || body.lock1 === "true";
+    if (typeof body.lock2 !== "undefined") lock2 = body.lock2 === true || body.lock2 === "true";
   }
 
   const lastUpdated = new Date().toISOString();
@@ -37,11 +44,20 @@ exports.handler = async (event) => {
   try {
     await ddb.put({
       TableName: "SmartMailboxStorage-dev",
-      Item: { deviceId, status, lastUpdated }
+      Item: { deviceId, lock1, lock2, lastUpdated }
     }).promise();
 
-    return { statusCode: 200, headers, body: JSON.stringify({ deviceId, status, lastUpdated }) };
-  } catch {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: "Nem sikerült frissíteni az állapotot" }) };
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ deviceId, lock1, lock2, lastUpdated })
+    };
+  } catch (err) {
+    console.error("DynamoDB put error:", err);
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: "Nem sikerült frissíteni az állapotot" })
+    };
   }
 };

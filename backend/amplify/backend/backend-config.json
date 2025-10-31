@@ -49,6 +49,22 @@
           ],
           "category": "function",
           "resourceName": "getDeviceLogs"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "unlockDevice"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "setPassword"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -149,6 +165,18 @@
     },
     "processDeviceEvents": {
       "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "setPassword": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "unlockDevice": {
+      "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -332,6 +360,38 @@
         {
           "category": "function",
           "resourceName": "processDeviceEvents"
+        }
+      ]
+    },
+    "AMPLIFY_function_setPassword_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "setPassword"
+        }
+      ]
+    },
+    "AMPLIFY_function_setPassword_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "setPassword"
+        }
+      ]
+    },
+    "AMPLIFY_function_unlockDevice_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "unlockDevice"
+        }
+      ]
+    },
+    "AMPLIFY_function_unlockDevice_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "unlockDevice"
         }
       ]
     },
