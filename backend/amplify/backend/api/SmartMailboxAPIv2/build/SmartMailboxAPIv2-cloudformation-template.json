@@ -2024,7 +2024,7 @@
         "Name": "SmartMailboxAPIv2"
       }
     },
-    "SmartMailboxAPIv2Default4XXResponse9d62a18f": {
+    "SmartMailboxAPIv2Default4XXResponsefa4c2b01": {
       "Type": "AWS::ApiGateway::GatewayResponse",
       "Properties": {
         "ResponseParameters": {
@@ -2039,7 +2039,7 @@
         }
       }
     },
-    "SmartMailboxAPIv2Default5XXResponse9d62a18f": {
+    "SmartMailboxAPIv2Default5XXResponsefa4c2b01": {
       "Type": "AWS::ApiGateway::GatewayResponse",
       "Properties": {
         "ResponseParameters": {
@@ -2054,7 +2054,7 @@
         }
       }
     },
-    "DeploymentAPIGWSmartMailboxAPIv26c043f6e": {
+    "DeploymentAPIGWSmartMailboxAPIv2d230a29c": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "Description": "The Development stage deployment of your API.",
@@ -2072,8 +2072,8 @@
         }
       },
       "DependsOn": [
-        "SmartMailboxAPIv2Default4XXResponse9d62a18f",
-        "SmartMailboxAPIv2Default5XXResponse9d62a18f"
+        "SmartMailboxAPIv2Default4XXResponsefa4c2b01",
+        "SmartMailboxAPIv2Default5XXResponsefa4c2b01"
       ]
     }
   }

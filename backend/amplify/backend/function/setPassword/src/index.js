@@ -5,7 +5,7 @@ exports.handler = async (event) => {
   console.log("Incoming event:", JSON.stringify(event));
 
   const headers = {
-    "Access-Control-Allow-Origin": "http://localhost:5173",
+    "Access-Control-Allow-Origin": event.headers?.origin || "*",
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
     "Access-Control-Allow-Methods": "POST,OPTIONS"
   };

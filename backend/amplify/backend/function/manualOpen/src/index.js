@@ -16,7 +16,7 @@ exports.handler = async (event) => {
   const cmd = lock === 2 ? "open_lock2" : "open_lock1";
 
   const headers = {
-    "Access-Control-Allow-Origin": "http://localhost:5173",
+    "Access-Control-Allow-Origin": event.headers?.origin || "*",
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
     "Access-Control-Allow-Methods": "POST,OPTIONS"
   };

@@ -331,7 +331,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/getLatestStatus-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/getLatestStatus-32766b6a717862645352-build.zip",
+          "s3Key": "amplify-builds/getLatestStatus-595a615878755765427a-build.zip",
           "tableName": "SmartMailboxStorage-dev",
           "storageSmartMailboxStorageName": {
             "Fn::GetAtt": [
@@ -355,7 +355,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/updateStatus-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/updateStatus-34482b54622f4d6b5653-build.zip",
+          "s3Key": "amplify-builds/updateStatus-6339337343683576746a-build.zip",
           "env": "dev"
         }
       }
@@ -367,7 +367,7 @@
         "Parameters": {
           "iotEndpoint": "aw0jttguq1qsu-ats.iot.eu-central-1.amazonaws.com",
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/manualOpen-6166466a623655614839-build.zip",
+          "s3Key": "amplify-builds/manualOpen-43354130317250526351-build.zip",
           "env": "dev"
         }
       }
@@ -378,7 +378,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/processDeviceEvents-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/processDeviceEvents-6f336e4d654746546843-build.zip",
+          "s3Key": "amplify-builds/processDeviceEvents-437a417676566a753666-build.zip",
           "env": "dev"
         }
       }
@@ -389,7 +389,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/listDevices-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/listDevices-7a33314b476b67786c47-build.zip",
+          "s3Key": "amplify-builds/listDevices-367858346367716d4a59-build.zip",
           "storageuserdevicesName": {
             "Fn::GetAtt": [
               "storageuserdevices",
@@ -418,7 +418,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/linkDevice-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/linkDevice-683176576568622f6258-build.zip",
+          "s3Key": "amplify-builds/linkDevice-3437792f6c4333717055-build.zip",
           "storageuserdevicesName": {
             "Fn::GetAtt": [
               "storageuserdevices",
@@ -498,7 +498,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/unlockDevice-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/unlockDevice-616e476d59346a5a3273-build.zip",
+          "s3Key": "amplify-builds/unlockDevice-68565032366968637553-build.zip",
           "env": "dev"
         }
       }
@@ -509,7 +509,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/setPassword-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/setPassword-74674875684251533351-build.zip",
+          "s3Key": "amplify-builds/setPassword-2b6f756d39504b6d2b46-build.zip",
           "env": "dev"
         }
       }

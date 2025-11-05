@@ -4,6 +4,7 @@ import RegisterPage from "./pages/RegisterPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import LogsPage from "./pages/LogsPage.jsx";
 import "./styles/App.css";
+import AuthCallback from "./pages/AuthCallback.jsx";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/logs" element={<LogsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/auth/callback" element={<AuthCallback />} /> 
       </Routes>
     </Router>
   );
