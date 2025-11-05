@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchAuthSession } from "aws-amplify/auth";
+import { fetchAuthSession } from "@aws-amplify/auth";
 import { getStatus, manual, listDevices } from "../api.ts";
 import RegisterDevice from "../components/RegisterDevice.jsx";
 import LockControls from "../components/LockControls.jsx";
