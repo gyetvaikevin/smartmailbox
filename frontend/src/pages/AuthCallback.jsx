@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleSignIn, fetchAuthSession } from "@aws-amplify/auth";
+import { fetchAuthSession } from "@aws-amplify/auth";
 
 export default function AuthCallback() {
   const navigate = useNavigate();
@@ -13,19 +13,22 @@ export default function AuthCallback() {
         const hasState = params.has("state");
 
         if (hasCode && hasState) {
-          await handleSignIn(); // Cognito redirect feldolgozása
+          // A Hosted UI redirect után a session már elérhető
           const session = await fetchAuthSession();
           const idToken = session.tokens?.idToken?.toString();
+
           if (idToken) {
+            console.log("Sikeres bejelentkezés, ID token:", idToken);
             navigate("/", { replace: true });
           } else {
+            console.error("Redirect után nincs idToken.");
             navigate("/login", { replace: true });
           }
         } else {
           navigate("/", { replace: true });
         }
       } catch (err) {
-        console.error("AuthCallback hiba:", err);
+        console.error("OAuth redirect feldolgozási hiba:", err);
         navigate("/login", { replace: true });
       }
     })();
