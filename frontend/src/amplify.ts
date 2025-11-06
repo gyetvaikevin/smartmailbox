@@ -1,7 +1,7 @@
 // amplify.ts
 import { Amplify } from "@aws-amplify/core";
 import { Auth } from "@aws-amplify/auth";
-
+Amplify.Logger.LOG_LEVEL = 'DEBUG';
 Amplify.configure({
   Auth: {
     // Ezek kellenek a UserPool inicializáláshoz
@@ -34,4 +34,3 @@ Amplify.configure({
   },
 });
 
-console.log("Amplify config:", Amplify.getConfig());
