@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Auth } from "aws-amplify"; // sima aws-amplify-ból jön
-import { getStatus, manual, listDevices } from "../api.js"; // figyelj: .js ha nem ts
+import { fetchAuthSession } from "@aws-amplify/auth"; // modular API
+import { getStatus, manual, listDevices } from "../api.js";
 import RegisterDevice from "../components/RegisterDevice.jsx";
 import LockControls from "../components/LockControls.jsx";
 import UnlockForm from "../components/UnlockForm.jsx";
@@ -39,8 +39,8 @@ export default function DashboardPage() {
   }
 
   async function getAuthToken() {
-    const session = await Auth.currentSession();
-    const idToken = session.getIdToken().getJwtToken();
+    const session = await fetchAuthSession();
+    const idToken = session.tokens?.idToken?.toString();
     return "Bearer " + idToken;
   }
 

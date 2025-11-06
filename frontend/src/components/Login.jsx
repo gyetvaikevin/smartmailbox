@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { Auth } from "aws-amplify"; // fontos: sima aws-amplify-ból jön
+import {
+  signIn,
+  signOut,
+  signInWithRedirect,
+} from "@aws-amplify/auth"; // modular API
 import "../styles/Login.css";
 
 export default function Login({ onLogin }) {
@@ -10,13 +14,12 @@ export default function Login({ onLogin }) {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const result = await Auth.signIn(email, password);
-      // result tartalmazza a user/session infót
-      if (result && result.signInUserSession) {
+      const result = await signIn({ username: email, password });
+      if (result.isSignedIn) {
         setMsg("Sikeres bejelentkezés.");
         onLogin?.();
       } else {
-        setMsg("További lépés szükséges (MFA vagy más).");
+        setMsg(`További lépés szükséges: ${result.nextStep.signInStep}`);
       }
     } catch (err) {
       setMsg(`Bejelentkezési hiba: ${err.message}`);
@@ -25,8 +28,7 @@ export default function Login({ onLogin }) {
 
   async function handleGoogleLogin() {
     try {
-      // Hosted UI redirect indítása Google providerrel
-      await Auth.federatedSignIn({ provider: "Google" });
+      await signInWithRedirect({ provider: "Google" });
     } catch (err) {
       setMsg(`Google bejelentkezési hiba: ${err.message}`);
     }
@@ -34,7 +36,7 @@ export default function Login({ onLogin }) {
 
   async function handleLogout() {
     try {
-      await Auth.signOut();
+      await signOut();
       setMsg("Sikeres kijelentkezés.");
       window.location.reload();
     } catch (err) {

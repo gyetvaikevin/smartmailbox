@@ -1,12 +1,12 @@
 // api.ts
-import { Auth } from "aws-amplify";
+import { fetchAuthSession } from "@aws-amplify/auth";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 async function authHeader() {
-  // Amplify 5/6 "sima" csomagban így kérsz sessiont:
-  const session = await Auth.currentSession();
-  const idToken = session.getIdToken().getJwtToken();
+  // Modular API: session lekérés
+  const session = await fetchAuthSession();
+  const idToken = session.tokens?.idToken?.toString();
   if (!idToken) throw new Error("Hiányzik az IdToken (jelentkezz be).");
   return { Authorization: `Bearer ${idToken}` };
 }

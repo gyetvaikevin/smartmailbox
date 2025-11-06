@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Auth } from "aws-amplify"; // fontos: sima aws-amplify-ból jön
+import { fetchAuthSession } from "@aws-amplify/auth"; // modular API
 
 export default function AuthCallback() {
   const navigate = useNavigate();
@@ -14,8 +14,8 @@ export default function AuthCallback() {
 
         if (hasCode && hasState) {
           // A Hosted UI redirect után a session már elérhető
-          const session = await Auth.currentSession();
-          const idToken = session.getIdToken().getJwtToken();
+          const session = await fetchAuthSession();
+          const idToken = session.tokens?.idToken?.toString();
 
           if (idToken) {
             console.log("Sikeres bejelentkezés, ID token:", idToken);

@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { Auth } from "aws-amplify"; // fontos: sima aws-amplify-ból jön
+import {
+  signUp,
+  confirmSignUp,
+  signInWithRedirect,
+} from "@aws-amplify/auth"; // modular API
 import "../styles/Register.css";
 
 export default function Register() {
@@ -11,10 +15,10 @@ export default function Register() {
   async function handleRegister(e) {
     e.preventDefault();
     try {
-      await Auth.signUp({
+      await signUp({
         username: email,
         password,
-        attributes: { email }, // itt "attributes" a kulcs, nem "options"
+        options: { userAttributes: { email } }, // modular API-nál "options"
       });
       setMsg("Regisztráció sikeres, ellenőrizd az emailt a kóddal.");
     } catch (err) {
@@ -25,7 +29,7 @@ export default function Register() {
   async function handleConfirm(e) {
     e.preventDefault();
     try {
-      await Auth.confirmSignUp(email, code);
+      await confirmSignUp({ username: email, confirmationCode: code });
       setMsg("Regisztráció megerősítve, most már bejelentkezhetsz.");
     } catch (err) {
       setMsg(`Megerősítési hiba: ${err.message}`);
@@ -35,7 +39,7 @@ export default function Register() {
   async function handleGoogleRegister() {
     try {
       // Hosted UI redirect indítása Google providerrel
-      await Auth.federatedSignIn({ provider: "Google" });
+      await signInWithRedirect({ provider: "Google" });
     } catch (err) {
       setMsg(`Google regisztráció/bejelentkezés hiba: ${err.message}`);
     }
@@ -49,13 +53,13 @@ export default function Register() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Jelszó"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Regisztráció</button>
       </form>
@@ -64,7 +68,7 @@ export default function Register() {
         <input
           placeholder="Megerősítő kód"
           value={code}
-          onChange={e => setCode(e.target.value)}
+          onChange={(e) => setCode(e.target.value)}
         />
         <button type="submit">Megerősítés</button>
       </form>
