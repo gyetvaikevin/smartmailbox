@@ -1,9 +1,9 @@
 import { Amplify } from "@aws-amplify/core";
-import { Auth } from "@aws-amplify/auth";
+import "@aws-amplify/auth";
+
 
 Amplify.configure({
   Auth: {
-    Cognito: {
       region: import.meta.env.VITE_REGION,
       userPoolId: import.meta.env.VITE_USER_POOL_ID,
       userPoolClientId: import.meta.env.VITE_USER_POOL_CLIENT_ID,
@@ -16,7 +16,6 @@ Amplify.configure({
           redirectSignOut: "http://localhost:5173/,https://main.d2y8t9d4z5sf43.amplifyapp.com/",
           responseType: "code",
         },
-      },
     },
   },
 });
