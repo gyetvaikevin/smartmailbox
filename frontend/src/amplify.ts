@@ -1,5 +1,4 @@
-import { Amplify } from 'aws-amplify';
-
+import { Amplify } from "aws-amplify";
 
 Amplify.configure({
   Auth: {
@@ -10,16 +9,16 @@ Amplify.configure({
       loginWith: {
         oauth: {
           domain: import.meta.env.VITE_COGNITO_DOMAIN,
-          scopes: ['openid', 'email', 'profile'],
+          scopes: ["openid", "email", "profile"],
           redirectSignIn: [
-            "http://localhost:5173/",
-            "https://main.d2y8t9d4z5sf43.amplifyapp.com/"
+            "http://localhost:5173/auth/callback",
+            "https://main.d2y8t9d4z5sf43.amplifyapp.com/auth/callback",
           ],
           redirectSignOut: [
             "http://localhost:5173/",
-            "https://main.d2y8t9d4z5sf43.amplifyapp.com/"
+            "https://main.d2y8t9d4z5sf43.amplifyapp.com/",
           ],
-          responseType: 'code',
+          responseType: "code",
         },
       },
     },
