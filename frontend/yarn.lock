@@ -2,16 +2,16 @@
 # yarn lockfile v1
 
 
-"@aws-amplify/auth@^6.16.0":
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-6.16.0.tgz#6256366538a47565bd017c4ab1d68c1f34ffdd4c"
-  integrity sha512-iKvpkKCSLeQBR2f7M4+xS3UUY1ucvdf5BD++djPD4QQj+Hlqqe/gyHRzrLP8WAWjzVs1PmQbW5fyVDoTa1sUZA==
+"@aws-amplify/auth@6.13.3":
+  version "6.13.3"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-6.13.3.tgz#84b5bbe2e46d2da5763ee806e91b4f5768033d4b"
+  integrity sha512-8kdLcZ+/k6E9H7+JS7mgLVuhbizngyDTBE653Ftqtl/7WSwO0/VS8J1O6/pcqG7vYC6v5i9QsIQqBQmV9oaBpQ==
   dependencies:
     "@aws-crypto/sha256-js" "5.2.0"
     "@smithy/types" "^3.3.0"
     tslib "^2.5.0"
 
-"@aws-amplify/core@^6.13.3":
+"@aws-amplify/core@6.13.3":
   version "6.13.3"
   resolved "https://registry.yarnpkg.com/@aws-amplify/core/-/core-6.13.3.tgz#ac3c36ed1571b890a7cf210491d91b276b30de32"
   integrity sha512-V3Candbkg4nKRrByzSV+Gi9AqZpa6T2U4DaTPysARucxv+KKZ6aRtXm+E8LLtkJniS7Q+yRL4tZlGWdiKwMicw==
