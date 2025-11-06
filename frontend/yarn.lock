@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@aws-amplify/auth@^6.3.0":
+"@aws-amplify/auth@^6.16.0":
   version "6.16.0"
   resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-6.16.0.tgz#6256366538a47565bd017c4ab1d68c1f34ffdd4c"
   integrity sha512-iKvpkKCSLeQBR2f7M4+xS3UUY1ucvdf5BD++djPD4QQj+Hlqqe/gyHRzrLP8WAWjzVs1PmQbW5fyVDoTa1sUZA==
