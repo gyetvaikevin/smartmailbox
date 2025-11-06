@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchAuthSession } from "@aws-amplify/auth";
+import { Auth } from "aws-amplify"; // sima aws-amplify-ból jön
 import "../styles/Logs.css";
 
 export default function LogsTable({ deviceId }) {
@@ -10,8 +10,9 @@ export default function LogsTable({ deviceId }) {
     async function fetchLogs() {
       try {
         setLoading(true);
-        const session = await fetchAuthSession();
-        const token = session.tokens?.idToken?.toString();
+        // Amplify session lekérés
+        const session = await Auth.currentSession();
+        const token = session.getIdToken().getJwtToken();
 
         const res = await fetch(
           `${import.meta.env.VITE_API_BASE_URL}/logs?deviceId=${deviceId}`,

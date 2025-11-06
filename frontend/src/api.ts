@@ -1,12 +1,13 @@
-import { fetchAuthSession } from '@aws-amplify/auth';
+// api.ts
+import { Auth } from "aws-amplify";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
-
 async function authHeader() {
-  const session = await fetchAuthSession();
-  const idToken = session.tokens?.idToken?.toString();
-  if (!idToken) throw new Error('Hiányzik az IdToken (jelentkezz be).');
+  // Amplify 5/6 "sima" csomagban így kérsz sessiont:
+  const session = await Auth.currentSession();
+  const idToken = session.getIdToken().getJwtToken();
+  if (!idToken) throw new Error("Hiányzik az IdToken (jelentkezz be).");
   return { Authorization: `Bearer ${idToken}` };
 }
 
@@ -14,9 +15,9 @@ async function authHeader() {
  * Eszköz státusz lekérése
  */
 export async function getStatus(deviceId: string) {
-  const headers = { 'Content-Type': 'application/json', ...(await authHeader()) };
+  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
   const res = await fetch(`${API_BASE}/statusget`, {
-    method: 'POST',
+    method: "POST",
     headers,
     body: JSON.stringify({ deviceId, limit: 1 }),
   });
@@ -28,13 +29,13 @@ export async function getStatus(deviceId: string) {
  * Manuális nyitás/zárás
  */
 export async function manual(
-  lock: 'lock1' | 'lock2',
-  action: 'open' | 'close',
+  lock: "lock1" | "lock2",
+  action: "open" | "close",
   deviceId: string
 ) {
-  const headers = { 'Content-Type': 'application/json', ...(await authHeader()) };
+  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
   const res = await fetch(`${API_BASE}/manual`, {
-    method: 'POST',
+    method: "POST",
     headers,
     body: JSON.stringify({ deviceId, lock, action }),
   });
@@ -57,9 +58,9 @@ export async function listDevices() {
  * Eszköz felhasználóhoz linkelése
  */
 export async function linkDevice(deviceId: string) {
-  const headers = { 'Content-Type': 'application/json', ...(await authHeader()) };
+  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
   const res = await fetch(`${API_BASE}/linkDevice`, {
-    method: 'POST',
+    method: "POST",
     headers,
     body: JSON.stringify({ deviceId }),
   });

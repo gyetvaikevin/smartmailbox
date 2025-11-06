@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signUp, confirmSignUp, signInWithRedirect } from "@aws-amplify/auth";
+import { Auth } from "aws-amplify"; // fontos: sima aws-amplify-ból jön
 import "../styles/Register.css";
 
 export default function Register() {
@@ -11,10 +11,10 @@ export default function Register() {
   async function handleRegister(e) {
     e.preventDefault();
     try {
-      await signUp({
+      await Auth.signUp({
         username: email,
         password,
-        options: { userAttributes: { email } },
+        attributes: { email }, // itt "attributes" a kulcs, nem "options"
       });
       setMsg("Regisztráció sikeres, ellenőrizd az emailt a kóddal.");
     } catch (err) {
@@ -25,7 +25,7 @@ export default function Register() {
   async function handleConfirm(e) {
     e.preventDefault();
     try {
-      await confirmSignUp({ username: email, confirmationCode: code });
+      await Auth.confirmSignUp(email, code);
       setMsg("Regisztráció megerősítve, most már bejelentkezhetsz.");
     } catch (err) {
       setMsg(`Megerősítési hiba: ${err.message}`);
@@ -34,7 +34,8 @@ export default function Register() {
 
   async function handleGoogleRegister() {
     try {
-      await signInWithRedirect({ provider: "Google" });
+      // Hosted UI redirect indítása Google providerrel
+      await Auth.federatedSignIn({ provider: "Google" });
     } catch (err) {
       setMsg(`Google regisztráció/bejelentkezés hiba: ${err.message}`);
     }
@@ -44,16 +45,27 @@ export default function Register() {
     <div className="register-box">
       <h3>Regisztráció</h3>
       <form onSubmit={handleRegister} className="register-form">
-        <input type="email" placeholder="Email" value={email}
-          onChange={e => setEmail(e.target.value)} />
-        <input type="password" placeholder="Jelszó" value={password}
-          onChange={e => setPassword(e.target.value)} />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Jelszó"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
         <button type="submit">Regisztráció</button>
       </form>
 
       <form onSubmit={handleConfirm} className="confirm-form">
-        <input placeholder="Megerősítő kód" value={code}
-          onChange={e => setCode(e.target.value)} />
+        <input
+          placeholder="Megerősítő kód"
+          value={code}
+          onChange={e => setCode(e.target.value)}
+        />
         <button type="submit">Megerősítés</button>
       </form>
 

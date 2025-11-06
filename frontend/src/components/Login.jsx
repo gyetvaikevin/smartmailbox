@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { signIn, signInWithRedirect, signOut } from '@aws-amplify/auth';
-import '../styles/Login.css';
+import { useState } from "react";
+import { Auth } from "aws-amplify"; // fontos: sima aws-amplify-ból jön
+import "../styles/Login.css";
 
 export default function Login({ onLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [msg, setMsg] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const result = await signIn({ username: email, password });
-      if (result.isSignedIn) {
-        setMsg('Sikeres bejelentkezés.');
+      const result = await Auth.signIn(email, password);
+      // result tartalmazza a user/session infót
+      if (result && result.signInUserSession) {
+        setMsg("Sikeres bejelentkezés.");
         onLogin?.();
       } else {
-        setMsg(`További lépés szükséges: ${result.nextStep.signInStep}`);
+        setMsg("További lépés szükséges (MFA vagy más).");
       }
     } catch (err) {
       setMsg(`Bejelentkezési hiba: ${err.message}`);
@@ -24,7 +25,8 @@ export default function Login({ onLogin }) {
 
   async function handleGoogleLogin() {
     try {
-      await signInWithRedirect({ provider: 'Google' });
+      // Hosted UI redirect indítása Google providerrel
+      await Auth.federatedSignIn({ provider: "Google" });
     } catch (err) {
       setMsg(`Google bejelentkezési hiba: ${err.message}`);
     }
@@ -32,8 +34,8 @@ export default function Login({ onLogin }) {
 
   async function handleLogout() {
     try {
-      await signOut();
-      setMsg('Sikeres kijelentkezés.');
+      await Auth.signOut();
+      setMsg("Sikeres kijelentkezés.");
       window.location.reload();
     } catch (err) {
       setMsg(`Kijelentkezési hiba: ${err.message}`);
@@ -48,13 +50,13 @@ export default function Login({ onLogin }) {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Jelszó"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Bejelentkezés</button>
       </form>

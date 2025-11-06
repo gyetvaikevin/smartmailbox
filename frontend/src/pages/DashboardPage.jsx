@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchAuthSession } from "@aws-amplify/auth";
-import { getStatus, manual, listDevices } from "../api.ts";
+import { Auth } from "aws-amplify"; // sima aws-amplify-ból jön
+import { getStatus, manual, listDevices } from "../api.js"; // figyelj: .js ha nem ts
 import RegisterDevice from "../components/RegisterDevice.jsx";
 import LockControls from "../components/LockControls.jsx";
 import UnlockForm from "../components/UnlockForm.jsx";
@@ -9,9 +9,7 @@ import "../styles/Dashboard.css";
 
 export default function DashboardPage() {
   const [devices, setDevices] = useState([]);
-  const [deviceId, setDeviceId] = useState(
-    import.meta.env.VITE_DEVICE_ID || ""
-  );
+  const [deviceId, setDeviceId] = useState(import.meta.env.VITE_DEVICE_ID || "");
   const [status, setStatus] = useState({ lock1: "UNKNOWN", lock2: "UNKNOWN" });
   const [note, setNote] = useState("");
 
@@ -41,8 +39,9 @@ export default function DashboardPage() {
   }
 
   async function getAuthToken() {
-    const session = await fetchAuthSession();
-    return "Bearer " + session.tokens.idToken.toString();
+    const session = await Auth.currentSession();
+    const idToken = session.getIdToken().getJwtToken();
+    return "Bearer " + idToken;
   }
 
   async function unlockDevice(password) {
@@ -94,7 +93,6 @@ export default function DashboardPage() {
       <LockControls status={status} deviceId={deviceId} onAction={manual} />
       <RegisterDevice onDevices={setDevices} />
 
-      {/* Új komponensek – most már a DashboardPage intézi az API hívást */}
       <div className="forms-container">
         <UnlockForm onUnlock={unlockDevice} deviceId={deviceId} />
         <SetPasswordForm onSetPassword={setPassword} deviceId={deviceId} />
