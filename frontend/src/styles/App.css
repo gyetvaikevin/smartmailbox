@@ -33,11 +33,6 @@ html, body, #root {
   color: #1abc9c;
 }
 
-main {
-  width: 100%;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
 
 .logo {
   color: #ecf0f1;
