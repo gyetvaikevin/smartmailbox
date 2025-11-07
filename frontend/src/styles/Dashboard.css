@@ -124,3 +124,12 @@
   margin-top: 12px;
   color: #555;
 }
+
+@media (max-width: 768px) {
+  .locks {
+    flex-direction: column;
+  }
+  .forms-container {
+    flex-direction: column;
+  }
+}
