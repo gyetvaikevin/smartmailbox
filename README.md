@@ -1,87 +1,75 @@
-# 📦 SmartMailbox
+📬 Smart Mailbox – ESP32 IoT Project
+🔹 Rövid leírás
+Okos postaláda prototípus ESP32 alapokon, érintőkijelzővel, QR kód olvasással és AWS IoT integrációval. A rendszer célja, hogy biztonságosan és kényelmesen lehessen kezelni a zárakat QR kód, webes felület vagy felhőalapú parancsok segítségével.
 
-**Verzió:** v1.1.0  
-**Frissítve:** 2025. október vége után – audit log frontend integráció + reszponzív UI overhaul
+⚙️ Funkciók
+Ajtónyitás több forrásból:
 
-A SmartMailbox egy IoT alapú, hitelesített kézbesítési pont, amely ESP32 hardverre, AWS backendre és React frontendre épül.  
-Célja: a hagyományos aláírásos átvétel kiváltása biztonságos, naplózott, távolról vezérelhető postaládával.
+érintőkijelző gombok
 
----
+QR kód olvasó
 
-## 🚀 Komponensek
+webes felület
 
-- **ESP32 firmware**
-  - Heartbeat, esemény logok, ack üzenetek
-  - Parancs fogadás MQTT-n
-  - Beépített diagnosztikai webszerver (`/lock1`, `/lock2`, `/mqttconnect`, `/ip`)
-  - QR modul UART-on
-  - Lock állapotfigyelés
+MQTT parancsok (AWS IoT)
 
-- **Backend (AWS)**
-  - IoT Core + Lambda + DynamoDB
-  - Funkciók: `updateStatus-dev`, `processDeviceEvents-dev`, `manualOpen-dev`, `getDeviceLogs-dev`
-  - Táblák:
-    - `SmartMailboxStorage-dev` → aktuális állapot
-    - `MailboxQRLogs-dev` → audit trail
-    - `userdevices` → user–device kapcsolatok
+Jelszókezelés és beállítások mentése
 
-- **Frontend (React)**
-  - Webes zárvezérlés
-  - Állapotlekérés színkódolt UI-val
-  - Audit logok táblázatos megjelenítése (`LogsPage` + `LogsTable`)
-  - Reszponzív, teljes szélességű UI (navbar, dashboard grid)
+Offline log tárolás és automatikus feltöltés, ha visszatér az internet
 
-- **Auth**
-  - Cognito User Pool
-  - Google IdP integráció
-  - PreSignUpClean / PostConfirmationClean Lambda
-  - GDPR-kompatibilis működés
+Vizualizált állapot a kijelzőn (ikonok, gombok, logó)
 
----
+Audit naplózás (nyitások, események, időbélyeggel)
 
-## 🔗 Fő végpontok
+🛠 Hardver
+ESP32 (WiFi + BT)
 
-- `POST /statusget` → aktuális zárállapot lekérése
-- `POST /manual` → kézi nyitási parancs
-- `GET /listDevices` → felhasználóhoz tartozó eszközök
-- `POST /linkDevice` → eszköz hozzárendelése
-- `GET /logs?deviceId=...` → audit logok lekérése
+TFT kijelző (ST7796 driver)
 
----
+Kapacitív érintésvezérlő (FT6206)
 
-## 📊 Kommunikációs összefoglaló
+Relék a zárakhoz
 
-| Forrás   | Cél       | Protokoll | Endpoint/Téma | Megjegyzés |
-|----------|-----------|-----------|---------------|------------|
-| ESP32    | IoT Core  | MQTT      | .../status    | Heartbeat + esemény log |
-| ESP32    | IoT Core  | MQTT      | .../ack       | Ack üzenet |
-| Backend  | ESP32     | MQTT      | .../cmd       | Nyitási parancs |
-| Frontend | API GW    | HTTPS     | /statusget    | Státusz lekérés |
-| Frontend | API GW    | HTTPS     | /manual       | Kézi vezérlés |
-| Frontend | API GW    | HTTPS     | /listDevices  | Eszközlista |
-| Frontend | API GW    | HTTPS     | /linkDevice   | Eszköz linkelés |
-| Frontend | API GW    | HTTPS     | /logs         | Audit log lekérés |
+QR kód olvasó (UART)
 
----
+Postaláda mechanika
 
-## ✅ Újdonságok v1.1.0
+💻 Szoftver
+Arduino IDE
 
-- Új `/logs` végpont → audit trail lekérés
-- `getDeviceLogs-dev` Lambda → DynamoDB query a `MailboxQRLogs-dev` táblából
-- Frontend:
-  - Új `LogsPage` + `LogsTable` komponensek
-  - Audit logok táblázatos megjelenítése
-  - Reszponzív, teljes szélességű UI overhaul
+Könyvtárak: Arduino_GFX, Adafruit GFX, WiFiManager, PubSubClient, ArduinoJson
 
----
+SPIFFS fájlrendszer (logó és ikonok tárolása)
 
+AWS IoT Core integráció (TLS tanúsítványokkal)
 
----
+WebServer API (jelszó beállítás, ajtóvezérlés)
 
-## ⚡ Fejlesztői jegyzetek
+☁️ Felhő integráció
+AWS IoT Core
 
-- A `dist/`, `node_modules/`, `#current-cloud-backend/` mappák nincsenek verziókövetve.
-- Verziózás: [SemVer](https://semver.org/) (MAJOR.MINOR.PATCH).
-- Utolsó stabil verzió: **v1.1.0**
+MQTT témák:
 
+postalada/<THINGNAME>/cmd – parancsok
 
+postalada/<THINGNAME>/ack – visszajelzés
+
+postalada/<THINGNAME>/status – audit log
+
+postalada/<THINGNAME>/statusupdate – aktuális állapot
+
+📊 Példa használat
+A felhasználó QR kódot mutat → postaláda nyílik.
+
+Az esemény audit logként kerül az AWS IoT‑be.
+
+Ha nincs internet, az esemény lokálisan tárolódik, majd később feltöltődik.
+
+A kijelzőn ikonok mutatják a WiFi/MQTT kapcsolat állapotát.
+
+🚀 Tervek
+Videós bemutató a működésről
+
+Webapp integráció a motoros projekttel
+
+További IoT funkciók (pl. értesítések mobilra)
