@@ -22,29 +22,29 @@
       "function": {
         "getLatestStatus": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/getLatestStatus-595a615878755765427a-build.zip",
+          "s3Key": "amplify-builds/getLatestStatus-6e70366f394f374d4533-build.zip",
           "tableName": "SmartMailboxStorage-dev"
         },
         "updateStatus": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/updateStatus-6339337343683576746a-build.zip"
+          "s3Key": "amplify-builds/updateStatus-6d544579764c2f4c742f-build.zip"
         },
         "manualOpen": {
           "iotEndpoint": "aw0jttguq1qsu-ats.iot.eu-central-1.amazonaws.com",
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/manualOpen-43354130317250526351-build.zip"
+          "s3Key": "amplify-builds/manualOpen-4269676c732b576c6f6e-build.zip"
         },
         "processDeviceEvents": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/processDeviceEvents-437a417676566a753666-build.zip"
+          "s3Key": "amplify-builds/processDeviceEvents-41536f722b673175664f-build.zip"
         },
         "listDevices": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/listDevices-367858346367716d4a59-build.zip"
+          "s3Key": "amplify-builds/listDevices-695a333631736e4b762f-build.zip"
         },
         "linkDevice": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/linkDevice-3437792f6c4333717055-build.zip"
+          "s3Key": "amplify-builds/linkDevice-4d433943786a6b794b37-build.zip"
         },
         "PreSignupClean": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
@@ -56,15 +56,15 @@
         },
         "getDeviceLogs": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/getDeviceLogs-687468414b636a6b5469-build.zip"
+          "s3Key": "amplify-builds/getDeviceLogs-71665072706d6c4a6756-build.zip"
         },
         "unlockDevice": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/unlockDevice-68565032366968637553-build.zip"
+          "s3Key": "amplify-builds/unlockDevice-6d3767705a6c33567531-build.zip"
         },
         "setPassword": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/setPassword-2b6f756d39504b6d2b46-build.zip"
+          "s3Key": "amplify-builds/setPassword-67342f5752586d35614f-build.zip"
         }
       },
       "api": {
