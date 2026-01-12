@@ -15,7 +15,10 @@ async function authHeader() {
  * Eszköz státusz lekérése
  */
 export async function getStatus(deviceId: string) {
-  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
+  const headers = {
+    "Content-Type": "application/json",
+    ...(await authHeader()),
+  };
   const res = await fetch(`${API_BASE}/statusget`, {
     method: "POST",
     headers,
@@ -28,21 +31,19 @@ export async function getStatus(deviceId: string) {
 /**
  * Manuális nyitás/zárás
  */
-export async function manual(
-  lock: "lock1" | "lock2",
-  action: "open" | "close",
-  deviceId: string
-) {
-  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
+export async function manual(deviceId: string, lock: "lock1" | "lock2") {
+  const headers = {
+    "Content-Type": "application/json",
+    ...(await authHeader()),
+  };
   const res = await fetch(`${API_BASE}/manual`, {
     method: "POST",
     headers,
-    body: JSON.stringify({ deviceId, lock, action }),
+    body: JSON.stringify({ deviceId, lock }),
   });
   if (!res.ok) throw new Error(`manual hiba: ${res.status}`);
   return res.json();
 }
-
 /**
  * Felhasználóhoz tartozó eszközök listázása
  */
@@ -58,7 +59,10 @@ export async function listDevices() {
  * Eszköz felhasználóhoz linkelése
  */
 export async function linkDevice(deviceId: string) {
-  const headers = { "Content-Type": "application/json", ...(await authHeader()) };
+  const headers = {
+    "Content-Type": "application/json",
+    ...(await authHeader()),
+  };
   const res = await fetch(`${API_BASE}/linkDevice`, {
     method: "POST",
     headers,
