@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { subscribeToPush } from "../push";
 import { fetchAuthSession } from "@aws-amplify/auth"; // modular API
 import { getStatus, manual, listDevices } from "../api.js";
 import RegisterDevice from "../components/RegisterDevice.jsx";
@@ -79,6 +80,7 @@ export default function DashboardPage() {
   return (
     <div className="dashboard">
       <h2>SmartMailbox Dashboard</h2>
+
       <div className="device-select">
         <select value={deviceId} onChange={(e) => setDeviceId(e.target.value)}>
           {devices.map((d) => (
@@ -87,7 +89,13 @@ export default function DashboardPage() {
             </option>
           ))}
         </select>
+
         <button onClick={refresh}>Frissítés</button>
+
+        {/* 🔔 PUSH FELIRATKOZÁS GOMB */}
+        <button onClick={() => subscribeToPush(deviceId)}>
+          Értesítések erre az eszközre
+        </button>
       </div>
 
       <LockControls status={status} deviceId={deviceId} onAction={manual} />
