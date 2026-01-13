@@ -76,6 +76,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/subscribe": {
+      "name": "/subscribe",
+      "lambdaFunction": "saveSubscription",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

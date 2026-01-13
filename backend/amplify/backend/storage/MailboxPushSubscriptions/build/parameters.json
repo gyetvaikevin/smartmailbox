@@ -1,0 +1,7 @@
+{
+  "tableName": "MailboxPushSubscriptions",
+  "partitionKeyName": "deviceId",
+  "partitionKeyType": "S",
+  "sortKeyName": "subscriptionId",
+  "sortKeyType": "S"
+}

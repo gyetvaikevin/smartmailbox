@@ -1,0 +1,14 @@
+{
+  "resourceName": "MailboxPushSubscriptions",
+  "tableName": "MailboxPushSubscriptions",
+  "partitionKey": {
+    "fieldName": "deviceId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "subscriptionId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

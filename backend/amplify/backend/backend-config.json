@@ -65,6 +65,14 @@
           ],
           "category": "function",
           "resourceName": "setPassword"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "saveSubscription"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -164,6 +172,11 @@
       "service": "Lambda"
     },
     "processDeviceEvents": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "saveSubscription": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -363,6 +376,22 @@
         }
       ]
     },
+    "AMPLIFY_function_saveSubscription_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveSubscription"
+        }
+      ]
+    },
+    "AMPLIFY_function_saveSubscription_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "saveSubscription"
+        }
+      ]
+    },
     "AMPLIFY_function_setPassword_deploymentBucketName": {
       "usedBy": [
         {
@@ -413,6 +442,10 @@
     }
   },
   "storage": {
+    "MailboxPushSubscriptions": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "MailboxQRLogs": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

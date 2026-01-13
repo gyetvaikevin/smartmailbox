@@ -59,6 +59,10 @@ const awsmobile = {
         {
             "tableName": "UserDevices-dev",
             "region": "eu-central-1"
+        },
+        {
+            "tableName": "MailboxPushSubscriptions-dev",
+            "region": "eu-central-1"
         }
     ]
 };

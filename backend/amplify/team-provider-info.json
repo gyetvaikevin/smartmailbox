@@ -17,7 +17,8 @@
       "storage": {
         "SmartMailboxStorage": {},
         "MailboxQRLogs": {},
-        "userdevices": {}
+        "userdevices": {},
+        "MailboxPushSubscriptions": {}
       },
       "function": {
         "getLatestStatus": {
@@ -36,7 +37,7 @@
         },
         "processDeviceEvents": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/processDeviceEvents-41536f722b673175664f-build.zip"
+          "s3Key": "amplify-builds/processDeviceEvents-33695a396b38584b336c-build.zip"
         },
         "listDevices": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
@@ -65,6 +66,10 @@
         "setPassword": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
           "s3Key": "amplify-builds/setPassword-67342f5752586d35614f-build.zip"
+        },
+        "saveSubscription": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/saveSubscription-53394b6f3642762f6d36-build.zip"
         }
       },
       "api": {

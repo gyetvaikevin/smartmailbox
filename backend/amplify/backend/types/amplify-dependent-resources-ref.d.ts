@@ -63,6 +63,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
+    "saveSubscription": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "setPassword": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -86,6 +93,16 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "MailboxPushSubscriptions": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
+    },
     "MailboxQRLogs": {
       "Arn": "string",
       "Name": "string",

@@ -321,6 +321,18 @@
               "Outputs.Arn"
             ]
           },
+          "functionsaveSubscriptionName": {
+            "Fn::GetAtt": [
+              "functionsaveSubscription",
+              "Outputs.Name"
+            ]
+          },
+          "functionsaveSubscriptionArn": {
+            "Fn::GetAtt": [
+              "functionsaveSubscription",
+              "Outputs.Arn"
+            ]
+          },
           "env": "dev"
         }
       }
@@ -378,7 +390,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/processDeviceEvents-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/processDeviceEvents-41536f722b673175664f-build.zip",
+          "s3Key": "amplify-builds/processDeviceEvents-33695a396b38584b336c-build.zip",
           "env": "dev"
         }
       }
@@ -514,6 +526,17 @@
         }
       }
     },
+    "functionsaveSubscription": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/saveSubscription-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/saveSubscription-53394b6f3642762f6d36-build.zip",
+          "env": "dev"
+        }
+      }
+    },
     "storageSmartMailboxStorage": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -549,6 +572,20 @@
           "partitionKeyName": "userId",
           "partitionKeyType": "S",
           "sortKeyName": "deviceId",
+          "sortKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "storageMailboxPushSubscriptions": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/storage/MailboxPushSubscriptions-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "MailboxPushSubscriptions",
+          "partitionKeyName": "deviceId",
+          "partitionKeyType": "S",
+          "sortKeyName": "subscriptionId",
           "sortKeyType": "S",
           "env": "dev"
         }
