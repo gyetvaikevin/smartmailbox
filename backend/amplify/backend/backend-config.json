@@ -181,6 +181,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "sendPushNotification": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "setPassword": {
       "build": true,
       "dependsOn": [],
@@ -389,6 +394,22 @@
         {
           "category": "function",
           "resourceName": "saveSubscription"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendPushNotification_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendPushNotification"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendPushNotification_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendPushNotification"
         }
       ]
     },

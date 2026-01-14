@@ -532,7 +532,18 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/saveSubscription-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/saveSubscription-53394b6f3642762f6d36-build.zip",
+          "s3Key": "amplify-builds/saveSubscription-363132475458794f3733-build.zip",
+          "env": "dev"
+        }
+      }
+    },
+    "functionsendPushNotification": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mailboxapp-dev-56efe-deployment/amplify-cfn-templates/function/sendPushNotification-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/sendPushNotification-5935744435366b304a67-build.zip",
           "env": "dev"
         }
       }

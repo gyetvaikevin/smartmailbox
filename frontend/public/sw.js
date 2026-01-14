@@ -10,8 +10,8 @@ self.addEventListener("push", (event) => {
   const body = data.body || "Új értesítés érkezett.";
   const options = {
     body,
-    icon: "/icon-192.png", 
-    badge: "/icon-192.png",
+    icon: "/appicon.png", 
+    badge: "/appicon.png",
   };
 
   event.waitUntil(self.registration.showNotification(title, options));

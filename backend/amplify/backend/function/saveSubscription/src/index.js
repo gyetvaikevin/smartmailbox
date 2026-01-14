@@ -53,14 +53,16 @@ export const handler = async (event) => {
       };
     }
 
-    const { deviceId, type, subscription } = body || {};
+    // A frontend NEM küldi a type mezőt → alapértelmezés: "webpush"
+    const { deviceId, subscription } = body || {};
+    const type = body?.type || "webpush";
 
-    if (!deviceId || !type || !subscription) {
+    if (!deviceId || !subscription) {
       return {
         statusCode: 400,
         headers,
         body: JSON.stringify({
-          error: "deviceId, type és subscription kötelező",
+          error: "deviceId és subscription kötelező",
         }),
       };
     }

@@ -69,7 +69,11 @@
         },
         "saveSubscription": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/saveSubscription-53394b6f3642762f6d36-build.zip"
+          "s3Key": "amplify-builds/saveSubscription-363132475458794f3733-build.zip"
+        },
+        "sendPushNotification": {
+          "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
+          "s3Key": "amplify-builds/sendPushNotification-5935744435366b304a67-build.zip"
         }
       },
       "api": {
