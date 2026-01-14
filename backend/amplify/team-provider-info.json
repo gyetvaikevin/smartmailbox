@@ -73,7 +73,7 @@
         },
         "sendPushNotification": {
           "deploymentBucketName": "amplify-mailboxapp-dev-56efe-deployment",
-          "s3Key": "amplify-builds/sendPushNotification-5935744435366b304a67-build.zip"
+          "s3Key": "amplify-builds/sendPushNotification-4c6e4e624f624d597243-build.zip"
         }
       },
       "api": {

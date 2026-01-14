@@ -46,8 +46,8 @@ export const handler = async () => {
           subscription,
           JSON.stringify({
             title: "SmartMailbox",
-            body: "Új levél érkezett!",
-            icon: "/icons/icon-192x192.png"
+            body: "Új csomag érkezett!",
+            icon: "/appicon.png",
           })
         );
       } catch (err) {
