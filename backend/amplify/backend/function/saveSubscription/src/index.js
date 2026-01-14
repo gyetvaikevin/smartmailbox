@@ -21,13 +21,11 @@ export const handler = async (event) => {
     headers["Access-Control-Allow-Origin"] = origin;
   }
 
-  // Preflight OPTIONS
   if (event.httpMethod === "OPTIONS") {
     return { statusCode: 200, headers, body: "" };
   }
 
   try {
-    // Cognito user azonosítása
     const claims =
       event.requestContext?.authorizer?.claims ||
       event.requestContext?.authorizer?.jwt?.claims;
@@ -41,7 +39,6 @@ export const handler = async (event) => {
       };
     }
 
-    // Body parse
     let body;
     try {
       body = typeof event.body === "string" ? JSON.parse(event.body) : event.body;
@@ -53,7 +50,6 @@ export const handler = async (event) => {
       };
     }
 
-    // A frontend NEM küldi a type mezőt → alapértelmezés: "webpush"
     const { deviceId, subscription } = body || {};
     const type = body?.type || "webpush";
 
@@ -68,11 +64,8 @@ export const handler = async (event) => {
     }
 
     const tableName = process.env.PUSH_SUBSCRIPTIONS_TABLE;
-
-    // SK = userId#type (pl. user123#webpush)
     const subscriptionId = `${userId}#${type}`;
 
-    // Mentés DynamoDB-be
     await ddb.send(
       new PutCommand({
         TableName: tableName,
@@ -80,8 +73,8 @@ export const handler = async (event) => {
           deviceId,
           subscriptionId,
           userId,
-          type,          // "webpush"
-          subscription,  // teljes subscription JSON
+          type,
+          subscription: JSON.stringify(subscription),   
           createdAt: new Date().toISOString(),
         },
       })
